@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
+import { connect } from 'react-redux'
 import { updateTodo } from '../actions'
 
 
@@ -10,20 +9,25 @@ class TodoList extends React.Component {
     }
    
     handleChanges = e => {
-        this.setState ({newTodos : e.target.value});
+        this.setState ({newTodos : e.target.value})
     }
 
     updateTodo = e => {
         e.preventDefault();
-        this.props.updateTodo(this.state.newTodos)
-        this.setState({newTodos : ''})
-        
+        this.props.updateTodo(this.state.newTodos);
+        this.setState({newTodos : ''});
     }
 
     render () {
+        console.log('Props', this.props)
         return (
             <div>
                 <h1>TodoList</h1>
+                <ul>
+                    {this.props.todo.map(item => (
+                    <li >{item.value}</li>
+                    ))}
+                </ul>
                 <form>
                 <input 
                   type = "text"
@@ -31,19 +35,18 @@ class TodoList extends React.Component {
                   onChange = {this.handleChanges}
                   placeholder = 'add to do ...'
                 />
-                <button onClick = {this.updateTodo}>Add Todos</button>
+                <button type = 'submit' onClick = {this.updateTodo}>Add Todos</button>
                 </form>
             </div>
         );
     }
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
+    console.log('STATE', state)
     return {
         todo: state.todo
     }
 }
 
-export default connect(
-    mapStatetoProps, {updateTodo}
-)(TodoList);
+export default connect(mapStateToProps, {updateTodo})(TodoList); 
