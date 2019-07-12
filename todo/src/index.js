@@ -6,7 +6,10 @@ import { Provider } from 'react-redux'
 import { reducer } from './reducers'
 import TodoList from './components/TodoList'
 
+
 const store = createStore(reducer);
+
+
 
 function App() {
   return (

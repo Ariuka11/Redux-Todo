@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { updateTodo } from '../actions'
+import { updateTodo, toggleTodo, deleteTodo } from '../actions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+const element = <FontAwesomeIcon icon={faCoffee} />
 
 
 class TodoList extends React.Component {
@@ -17,17 +21,29 @@ class TodoList extends React.Component {
         this.props.updateTodo(this.state.newTodos);
         this.setState({newTodos : ''});
     }
+    toggleTodo = (e, index) => {
+        e.preventDefault();
+        this.props.toggleTodo(index);
+    }
+
+    deleteTodo = (e) => {
+        e.preventDefault();
+        this.props.deleteTodo();
+    }
 
     render () {
         console.log('Props', this.props)
         return (
             <div>
                 <h1>TodoList</h1>
-                <ul>
-                    {this.props.todo.map(item => (
-                    <li >{item.value}</li>
+                <div>
+                    {this.props.todo.map((item, index) => (
+                    <h4 onClick = {e=> this.toggleTodo(e, index)} key = {index}>
+                      {item.value}
+                      {item.completed && element}
+                    </h4>
                     ))}
-                </ul>
+                </div>
                 <form>
                 <input 
                   type = "text"
@@ -37,6 +53,7 @@ class TodoList extends React.Component {
                 />
                 <button type = 'submit' onClick = {this.updateTodo}>Add Todos</button>
                 </form>
+                <button type = "submit" onClick = {this.deleteTodo}>Delete</button>
             </div>
         );
     }
@@ -49,4 +66,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {updateTodo})(TodoList); 
+export default connect(mapStateToProps, {updateTodo, toggleTodo, deleteTodo})(TodoList); 

@@ -6,3 +6,16 @@ export const updateTodo = todo => {
         payload : todo
     }
 }
+
+export const toggleTodo = index => {
+    return {
+        type: "TOGGLE_TODO",
+        payload: index
+    }
+}
+
+export const deleteTodo = () => {
+    return {
+        type: "DELETE_TODO"
+    }
+}
