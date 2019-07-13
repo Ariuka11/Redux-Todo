@@ -45,13 +45,13 @@ class TodoList extends React.Component {
                     ))}
                 </div>
                 <form>
-                <input 
-                  type = "text"
-                  value = {this.state.newTodos}
-                  onChange = {this.handleChanges}
-                  placeholder = 'add to do ...'
-                />
-                <button type = 'submit' onClick = {this.updateTodo}>Add Todos</button>
+                    <input 
+                    type = "text"
+                    value = {this.state.newTodos}
+                    onChange = {this.handleChanges}
+                    placeholder = 'add to do ...'
+                    />
+                    <button type = 'submit' onClick = {this.updateTodo}>Add Todos</button>
                 </form>
                 <button type = "submit" onClick = {this.deleteTodo}>Delete</button>
             </div>
