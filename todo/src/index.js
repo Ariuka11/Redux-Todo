@@ -9,8 +9,6 @@ import TodoList from './components/TodoList'
 
 const store = createStore(reducer);
 
-
-
 function App() {
   return (
     <div className="App">
