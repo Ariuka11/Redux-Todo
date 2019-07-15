@@ -13,7 +13,7 @@ class TodoList extends React.Component {
     }
    
     handleChanges = e => {
-        this.setState ({newTodos : e.target.value})
+        this.setState ({newTodos: e.target.value})
     }
 
     updateTodo = e => {
@@ -53,9 +53,9 @@ class TodoList extends React.Component {
                     />
                     <button type = 'submit' onClick = {this.updateTodo}>Add Todos</button>
                 </form>
-                <button type = "submit" onClick = {this.deleteTodo}>Delete</button>
+                 <button type = "submit" onClick = {this.deleteTodo}>Delete</button>
             </div>
-        );
+        ); 
     }
 }
 
